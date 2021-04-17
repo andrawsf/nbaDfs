@@ -1,10 +1,14 @@
 """
-This file implements a player object to be used to store statistics for players
+This file implements a player object to be used to store statistics 
+for players accross the dfs application.
 """
 thisYear = 1
 lastYear = 2
 
 class SeasonStats:
+    """
+    includes standard stats for players collected during a season
+    """
     def __init__(self):
         self.gamesPlayed = 0
         self.assists = 0 #all stats are per game
@@ -37,11 +41,10 @@ class SeasonStats:
         if(self.minutes != 0.0):
             self.fantasyPointsPerMinute = self.fantasyPoints / self.minutes
 
-    #def toJSON(self, playerStatArray):
-
-    
-
 class Player:
+    """
+    includes the name and position as well as previous stats
+    """
     def __init__(self):
         self.name = ""
         self.position = ""
@@ -58,12 +61,17 @@ class Player:
         self.name = tableRow.find('td', attrs={"data-stat": "player"}).a.contents[0]
         self.position = tableRow.find('td', attrs={"data-stat": "pos"}).contents[0]
         self.currentStats.fromHTML(tableRow)
+        self.currentStats.calculateFPPG()
         self.__dict__.update({'currentStats': self.currentStats.__dict__})
 
     def fetchPreviousStats(self, tableRow):
         if(self.name == tableRow.find('td', attrs={"data-stat": "player"}).a.contents[0]):
             self.prevStats.fromHTML(tableRow)
+            self.prevStats.calculateFPPG()
             self.__dict__.update({'prevStats': self.prevStats.__dict__})
-
-
-
+    
+    def isSamePlayer(self, name):
+        if(self.name == name):
+            return True
+        else:
+            return False

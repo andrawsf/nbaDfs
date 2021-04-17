@@ -1,0 +1,10 @@
+setup.py
+dailyfantasy/__init__.py
+dailyfantasy/main.py
+dailyfantasy.egg-info/PKG-INFO
+dailyfantasy.egg-info/SOURCES.txt
+dailyfantasy.egg-info/dependency_links.txt
+dailyfantasy.egg-info/top_level.txt
+dailyfantasy/scraper/__init__.py
+dailyfantasy/scraper/player.py
+dailyfantasy/scraper/scrape.py
