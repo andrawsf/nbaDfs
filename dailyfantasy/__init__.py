@@ -4,6 +4,7 @@ for players accross the dfs application.
 """
 thisYear = 1
 lastYear = 2
+playerStatArray = [] # all the players when scraped will be stored here
 
 class SeasonStats:
     """

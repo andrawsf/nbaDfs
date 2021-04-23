@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 
 # local application imports
 from dailyfantasy import Player
+from dailyfantasy import playerStatArray
 
 def FixNbaPlayerNamesWithAccents(playerName):
     if ('Jonas V' in playerName):
@@ -22,8 +23,11 @@ def FixNbaPlayerNamesWithAccents(playerName):
         playerName = "Goran Dragic"
     return playerName
 
-def GetCurrentSeasonPlayerStats():
-    playerStatArray = []
+'''
+This function collects this years and last years stats relevant to fantasy
+it also sets up the initial player list in playerStatArray (empty before this)
+'''
+def GetPlayerStats():
     currentSeasonurl = 'https://www.basketball-reference.com/leagues/NBA_2021_per_game.html'
     lastSeasonurl = 'https://www.basketball-reference.com/leagues/NBA_2020_per_game.html'
     
